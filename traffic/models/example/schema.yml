@@ -1,0 +1,50 @@
+
+version: 2
+
+sources:
+  - name: traffic_source
+    database: postgres
+    schema: public 
+    tables:
+      - name: taipei_traffic
+      - name: freeway_bureau
+      - name: directorate_of_general_highways
+  
+  - name: weather_source
+    database: postgres
+    schema: public 
+    tables:
+      - name: weather_data
+        
+models:
+  - name: weather_conditions
+    description: "A dbt model for weather conditions"
+    columns:
+      - name: locationid
+        description: "Location ID"
+      - name: congestionlevelid
+        description: "Congestion Level ID"
+  
+  - name: rain_congestion_levels
+    description: "Find congestion levels during heavy rain"
+    columns:
+      - name: sectionid
+        description: "Section ID"
+      - name: congestionlevelid
+        description: "Congestion Level ID"
+      - name: traveltime
+        description: "Travel Time"
+      - name: travelspeed
+        description: "Travel Speed"
+      - name: locationname
+        description: "Location Name"
+      - name: elementname
+        description: "Element Name"
+      - name: starttime
+        description: "Start Time"
+      - name: endtime
+        description: "End Time"
+      - name: parametername
+        description: "Parameter Name"
+      - name: parameterunit
+        description: "Parameter Unit"
